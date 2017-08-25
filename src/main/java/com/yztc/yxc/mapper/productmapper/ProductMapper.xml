@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yztc.yxc.mapper.productmapper.ProductMapper">
+
+    <!-- 添加-->
+    <insert id="addProduct" parameterType="com.yztc.yxc.entity.product.Product" >
+        INSERT INTO product
+        (pid,starttime,price_status,adult_price,child_price,class_id,product_name,
+        sub_name,sitecode,city_id,province_id,days,price,thumb,place_label,product_cat,
+        class_theme_id,product_type,vehicle,destination,num_people)
+         VALUES
+         (#{pid},now(),#{price_status},#{adult_price},#{child_price},#{class_id},#{product_name},
+        #{sub_name},#{sitecode},#{city_id},#{province_id},#{days},#{price},#{thumb},#{place_label},#{product_cat},
+        #{class_theme_id},#{product_type},#{vehicle},#{destination},#{num_people})
+    </insert>
+    <!-- 删除-->
+    <delete id="deleteProduct" parameterType="Product">
+        delete from product where  pid=#{pid}
+    </delete>
+
+    <select id="findAll" resultType="Product">
+        SELECT * from  product
+    </select>
+
+
+</mapper>
